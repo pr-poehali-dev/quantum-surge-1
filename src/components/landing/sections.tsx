@@ -42,6 +42,7 @@ const players = [
     hs: "59%",
     adr: "89.3",
     hltvUrl: "https://www.hltv.org/player/7998/s1mple",
+    photo: "https://cdn.poehali.dev/projects/b0b32e2b-fa22-477f-af8f-4bf8cbae645c/bucket/a40ff8fa-5e52-46b7-9eec-c3565ecc2b0c.jpg",
   },
 ]
 
@@ -80,6 +81,13 @@ const RosterSection = () => (
               <div className={`font-semibold ${isLow ? "text-red-400" : "text-neutral-300"}`}>{p.adr}</div>
             </div>
           </div>
+          {p.photo && (
+            <img
+              src={p.photo}
+              alt={p.name}
+              className="w-full h-24 object-cover object-top rounded-lg mt-1"
+            />
+          )}
           <div className="text-[10px] text-neutral-600 mt-1">HLTV Stats</div>
           {p.hltvUrl && (
             <a
