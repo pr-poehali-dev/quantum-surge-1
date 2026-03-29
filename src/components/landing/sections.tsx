@@ -1,5 +1,3 @@
-import { Badge } from "@/components/ui/badge"
-
 const players = [
   {
     name: "Kpeze666",
@@ -48,92 +46,105 @@ const players = [
 ]
 
 const RosterSection = () => (
-  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mt-2 w-full max-w-6xl">
-    {players.map((p) => {
-      const isLow = false
-      return (
-        <div
-          key={p.name}
-          className={`rounded-xl border p-4 flex flex-col gap-2 bg-black/40 backdrop-blur-sm ${
-            isLow ? "border-red-800/60" : "border-[#FF4D00]/40"
-          }`}
-        >
-          <div className="flex items-center justify-between">
-            <span className="font-bold text-white text-sm">{p.name}</span>
-            <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${isLow ? "bg-red-900/60 text-red-400" : "bg-[#FF4D00]/20 text-[#FF4D00]"}`}>
-              {p.role}
-            </span>
-          </div>
-          <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-xs mt-1">
-            <div>
-              <div className="text-neutral-500">Rating</div>
-              <div className={`font-bold text-base ${isLow ? "text-red-400" : "text-white"}`}>{p.rating}</div>
-            </div>
-            <div>
-              <div className="text-neutral-500">K/D</div>
-              <div className={`font-bold text-base ${isLow ? "text-red-400" : "text-white"}`}>{p.kd}</div>
-            </div>
-            <div>
-              <div className="text-neutral-500">HS%</div>
-              <div className={`font-semibold ${isLow ? "text-red-400" : "text-neutral-300"}`}>{p.hs}</div>
-            </div>
-            <div>
-              <div className="text-neutral-500">ADR</div>
-              <div className={`font-semibold ${isLow ? "text-red-400" : "text-neutral-300"}`}>{p.adr}</div>
-            </div>
-          </div>
-          {p.photo && (
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4 w-full max-w-6xl">
+    {players.map((p, i) => (
+      <div
+        key={p.name}
+        className="group relative border neon-border bg-[var(--bg3)] p-0 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(13,255,110,0.15)]"
+        style={{ animationDelay: `${i * 0.1}s` }}
+      >
+        {p.photo && (
+          <div className="relative h-36 overflow-hidden">
             <img
               src={p.photo}
               alt={p.name}
-              className="w-full h-24 object-cover object-top rounded-lg mt-1"
+              className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
             />
-          )}
-          <div className="text-[10px] text-neutral-600 mt-1">HLTV Stats</div>
-          {p.hltvUrl && (
-            <a
-              href={p.hltvUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] text-[#FF4D00] hover:underline mt-1"
-            >
-              Профиль на HLTV →
-            </a>
-          )}
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg3)] to-transparent" />
+          </div>
+        )}
+        <div className="p-4 flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            <span className="font-heading text-xl uppercase tracking-wider" style={{ color: 'var(--text)' }}>{p.name}</span>
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: 'var(--neon)' }}>
+            {p.role}
+          </span>
+          <div className="grid grid-cols-2 gap-x-3 gap-y-2 mt-2 font-mono text-xs">
+            <div>
+              <div style={{ color: 'var(--text-dim)' }} className="text-[10px] uppercase tracking-wider">Rating</div>
+              <div className="text-lg font-bold" style={{ color: 'var(--neon)' }}>{p.rating}</div>
+            </div>
+            <div>
+              <div style={{ color: 'var(--text-dim)' }} className="text-[10px] uppercase tracking-wider">K/D</div>
+              <div className="text-lg font-bold" style={{ color: 'var(--text)' }}>{p.kd}</div>
+            </div>
+            <div>
+              <div style={{ color: 'var(--text-dim)' }} className="text-[10px] uppercase tracking-wider">HS%</div>
+              <div style={{ color: 'var(--text-dim)' }}>{p.hs}</div>
+            </div>
+            <div>
+              <div style={{ color: 'var(--text-dim)' }} className="text-[10px] uppercase tracking-wider">ADR</div>
+              <div style={{ color: 'var(--text-dim)' }}>{p.adr}</div>
+            </div>
+          </div>
+          <div className="mt-2 pt-2 flex items-center justify-between" style={{ borderTop: '1px solid var(--text-border)' }}>
+            <span className="font-mono text-[9px] uppercase tracking-wider" style={{ color: 'var(--text-border)' }}>HLTV Stats</span>
+            {p.hltvUrl && (
+              <a
+                href={p.hltvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[10px] uppercase tracking-wider transition-colors hover:underline"
+                style={{ color: 'var(--neon)' }}
+              >
+                Profile →
+              </a>
+            )}
+          </div>
         </div>
-      )
-    })}
+      </div>
+    ))}
   </div>
 )
 
 const MatchSection = () => (
-  <div className="w-full max-w-2xl">
-    <div className="rounded-2xl border border-[#FF4D00]/40 bg-black/50 backdrop-blur-sm p-6 md:p-8">
-      <div className="flex items-center justify-between gap-4">
+  <div className="w-full max-w-3xl">
+    <div className="border neon-border neon-glow p-8 md:p-10" style={{ background: 'var(--bg2)' }}>
+      <div className="flex items-center justify-center gap-2 mb-8">
+        <div className="h-px flex-1" style={{ background: 'var(--text-border)' }} />
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] px-4" style={{ color: 'var(--text-dim)' }}>Upcoming Match · CS2</span>
+        <div className="h-px flex-1" style={{ background: 'var(--text-border)' }} />
+      </div>
+      <div className="flex items-center justify-between gap-6">
         <div className="text-center flex-1">
-          <div className="text-[#FF4D00] font-black text-lg md:text-2xl uppercase tracking-wider">Team Arbitrajniki</div>
-          <div className="mt-3 flex flex-col gap-1 text-xs text-neutral-400">
+          <div className="font-heading text-2xl md:text-4xl uppercase tracking-wider neon-text">
+            Team<br/>Arbitrajniki
+          </div>
+          <div className="mt-4 flex flex-col gap-1 font-mono text-xs" style={{ color: 'var(--text-dim)' }}>
             {["Donk", "S1mple", "Kpeze666", "misante", "dhira777"].map((n) => (
               <span key={n}>{n}</span>
             ))}
           </div>
         </div>
-        <div className="flex flex-col items-center gap-1">
-          <div className="text-3xl font-black text-white">VS</div>
-          <div className="text-[10px] text-neutral-500 uppercase tracking-widest mt-1">CS2</div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="font-heading text-4xl md:text-5xl" style={{ color: 'var(--text)' }}>VS</div>
+          <div className="w-8 h-px" style={{ background: 'var(--neon)', boxShadow: '0 0 8px var(--neon)' }} />
         </div>
         <div className="text-center flex-1">
-          <div className="text-white font-black text-lg md:text-2xl uppercase tracking-wider">Gladkovka Team</div>
-          <div className="mt-3 flex flex-col gap-1 text-xs text-neutral-400">
+          <div className="font-heading text-2xl md:text-4xl uppercase tracking-wider" style={{ color: 'var(--text)' }}>
+            Gladkovka<br/>Team
+          </div>
+          <div className="mt-4 flex flex-col gap-1 font-mono text-xs" style={{ color: 'var(--text-dim)' }}>
             {["RONIK", "Danich", "malish-vasya", "VITALIK", "dxnisixs"].map((n) => (
               <span key={n}>{n}</span>
             ))}
           </div>
         </div>
       </div>
-      <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-center gap-3">
-        <div className="w-2 h-2 rounded-full bg-[#FF4D00] animate-pulse" />
-        <span className="text-white font-semibold text-sm">1 апреля 2026 · 20:00 по Киеву</span>
+      <div className="mt-8 pt-6 flex items-center justify-center gap-3" style={{ borderTop: '1px solid var(--text-border)' }}>
+        <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--neon)', boxShadow: '0 0 10px var(--neon)' }} />
+        <span className="font-mono text-sm tracking-wider" style={{ color: 'var(--text)' }}>1 АПРЕЛЯ 2026 · 20:00 KYIV</span>
       </div>
     </div>
   </div>
@@ -142,31 +153,48 @@ const MatchSection = () => (
 export const sections = [
   {
     id: 'hero',
-    subtitle: <Badge variant="outline" className="text-[#FF4D00] border-[#FF4D00]">CS2 · Киберспорт</Badge>,
-    title: "Team Arbitrajniki.",
+    subtitle: (
+      <span className="font-mono text-xs uppercase tracking-[0.3em] inline-block px-3 py-1 border" style={{ color: 'var(--neon)', borderColor: 'rgba(13,255,110,0.3)' }}>
+        CS2 · Esports
+      </span>
+    ),
+    title: "Team Arbitrajniki",
     content: "Лучшая команда в сфере Counter Strike 2",
   },
   {
     id: 'roster',
-    title: 'Состав команды',
+    title: 'Roster',
+    subtitle: (
+      <span className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: 'var(--text-dim)' }}>
+        ── Состав команды
+      </span>
+    ),
     content: 'Пять игроков — одна цель. Статистика по данным HLTV.',
     customContent: <RosterSection />,
   },
   {
     id: 'match',
-    subtitle: <Badge variant="outline" className="text-[#FF4D00] border-[#FF4D00]">Предстоящий матч</Badge>,
-    title: 'Ближайшая игра',
+    title: 'Next Match',
+    subtitle: (
+      <span className="font-mono text-xs uppercase tracking-[0.3em] inline-block px-3 py-1 border" style={{ color: 'var(--neon)', borderColor: 'rgba(13,255,110,0.3)' }}>
+        Предстоящий матч
+      </span>
+    ),
     customContent: <MatchSection />,
   },
   {
     id: 'academy',
-    subtitle: <Badge variant="outline" className="text-[#FF4D00] border-[#FF4D00]">Soon</Badge>,
-    title: 'Arbitrajniki Academy',
+    subtitle: (
+      <span className="font-mono text-xs uppercase tracking-[0.3em] inline-block px-3 py-1" style={{ color: 'var(--gold)', borderBottom: '1px solid var(--gold)' }}>
+        Soon
+      </span>
+    ),
+    title: 'Academy',
     content: 'Проходит набор в академию команды. Тренировки, разборы матчей и путь в киберспорт — скоро открытие.',
   },
   {
     id: 'join',
-    title: 'Следи за нами.',
+    title: 'Join Us',
     content: 'Поддержи команду Arbitrajniki в предстоящем матче против Gladkovka Team. Вместе к победе!',
   },
 ]
