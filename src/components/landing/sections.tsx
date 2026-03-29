@@ -32,6 +32,7 @@ const players = [
     kd: "1.52",
     hs: "71%",
     adr: "96.8",
+    hltvUrl: "https://www.hltv.org/player/21167/donk",
   },
   {
     name: "S1mple",
@@ -40,6 +41,7 @@ const players = [
     kd: "1.44",
     hs: "59%",
     adr: "89.3",
+    hltvUrl: "https://www.hltv.org/player/7998/s1mple",
   },
 ]
 
@@ -79,6 +81,16 @@ const RosterSection = () => (
             </div>
           </div>
           <div className="text-[10px] text-neutral-600 mt-1">HLTV Stats</div>
+          {p.hltvUrl && (
+            <a
+              href={p.hltvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] text-[#FF4D00] hover:underline mt-1"
+            >
+              Профиль на HLTV →
+            </a>
+          )}
         </div>
       )
     })}
