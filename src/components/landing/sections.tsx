@@ -33,6 +33,7 @@ const players = [
     hs: "71%",
     adr: "96.8",
     hltvUrl: "https://www.hltv.org/player/21167/donk",
+    photo: "https://cdn.poehali.dev/projects/b0b32e2b-fa22-477f-af8f-4bf8cbae645c/bucket/bab78415-9b30-48ed-9c92-1e538e30b3fb.jpg",
   },
   {
     name: "S1mple",
