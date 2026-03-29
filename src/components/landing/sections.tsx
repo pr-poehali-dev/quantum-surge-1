@@ -20,10 +20,10 @@ const players = [
   {
     name: "dhira777",
     role: "Support",
-    rating: "0.61",
-    kd: "0.58",
-    hs: "31%",
-    adr: "44.1",
+    rating: "1.19",
+    kd: "1.23",
+    hs: "55%",
+    adr: "78.6",
   },
   {
     name: "Donk",
@@ -46,7 +46,7 @@ const players = [
 const RosterSection = () => (
   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mt-2 w-full max-w-6xl">
     {players.map((p) => {
-      const isLow = p.name === "dhira777"
+      const isLow = false
       return (
         <div
           key={p.name}
