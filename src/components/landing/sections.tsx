@@ -150,6 +150,12 @@ export const sections = [
     customContent: <MatchSection />,
   },
   {
+    id: 'academy',
+    subtitle: <Badge variant="outline" className="text-[#FF4D00] border-[#FF4D00]">Soon</Badge>,
+    title: 'Arbitrajniki Academy',
+    content: 'Проходит набор в академию команды. Тренировки, разборы матчей и путь в киберспорт — скоро открытие.',
+  },
+  {
     id: 'join',
     title: 'Следи за нами.',
     content: 'Поддержи команду Arbitrajniki в предстоящем матче против Gladkovka Team. Вместе к победе!',
