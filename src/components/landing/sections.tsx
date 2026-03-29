@@ -123,7 +123,7 @@ export const sections = [
     id: 'hero',
     subtitle: <Badge variant="outline" className="text-[#FF4D00] border-[#FF4D00]">CS2 · Киберспорт</Badge>,
     title: "Team Arbitrajniki.",
-    content: "Мы играем жёстко. Мы играем вместе. Мы побеждаем.",
+    content: "Лучшая команда в сфере Counter Strike 2",
   },
   {
     id: 'roster',
