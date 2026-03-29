@@ -4,7 +4,7 @@ import type { SectionProps } from "@/types"
 
 export default function Section({ id, title, subtitle, content, showButton, buttonText, customContent }: SectionProps) {
   return (
-    <section id={id} className="relative min-h-screen w-full flex flex-col justify-center p-8 md:p-16 lg:p-24 pt-20">
+    <section id={id} className="relative min-h-screen w-full flex flex-col justify-center p-8 md:p-16 lg:p-24 pb-24">
       {subtitle && (
         <motion.div
           className="mb-12"
